@@ -51,3 +51,55 @@ p, h1, h2, h3, h4, h5, h6 {
 #root, #__next {
    isolation: isolate;
 }
+
+
+
+
+/* **** */
+/* Body */
+/* **** */
+
+body {
+   --body-bg: black;
+   --body-text-color: white;
+
+   height: 100dvh;
+
+   color: var(--body-text-color);
+   background-color: var(--body-bg);
+}
+
+
+/* ********* */
+/* Temporary */
+/* ********* */
+
+
+/* ** */
+/* Ul */
+/* ** */
+
+ul {
+   padding: 0;
+
+   padding-bottom: 8rem;
+
+   list-style: none;
+
+   font-family: arial;
+   font-size: 2rem;
+}
+
+
+/* ** */
+/* Ol */
+/* ** */
+
+ol {
+   padding: 0;
+
+   list-style: none;
+
+   font-family: arial;
+   font-size: 2rem;
+}

@@ -1,6 +1,8 @@
 # Portfolio, in 1 week
 This is my repository of my portfolio website.
 
+<img src="./docs/assets/images/dummy_1920x1080_ffffff_cccccc.png" alt="Placeholder Image 1920x1080">
+
 
 This is the repository of <a href="https://danianmarengo.nl">Danian Marengo</a> for his, portfolio website. This website was created for the project <a href="https://github.com/cmda-minor-web web-app-from-scratch-2223"></a>, which is part of the <a href="https://github.com/cmda-minor-web">Minor Web design and Development 2022- 2023</a> at the <a href="https://www.hva.nl/">Amsterdams University of Applied Sciences</a>, as part of the program <a href="https://www.hva.nl/opleidingen/communication-and-multimedia-design?gclid=Cj0KCQiAgaGgBhC8ARIsAAAyLfFCp5OTcBLGcx-_uMWa2sowONOebB19jLA1KMt2yEmVFGWaHdsi9DwaAq0PEALw_wcB">Communication and Multimedia design.</a>
 

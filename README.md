@@ -1,5 +1,5 @@
 # Portfolio, in 1 week
-This is my repository of my portfolio website.
+This is my repository for my portfolio website.
 
 <img src="./docs/assets/images/dummy_1920x1080_ffffff_cccccc.png" alt="Placeholder Image 1920x1080">
 

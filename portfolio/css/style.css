@@ -60,13 +60,7 @@ p, h1, h2, h3, h4, h5, h6 {
 /* **** */
 
 body {
-   --body-bg: black;
-   --body-text-color: white;
-
    height: 100dvh;
-
-   color: var(--body-text-color);
-   background-color: var(--body-bg);
 }
 
 
@@ -75,31 +69,178 @@ body {
 /* ********* */
 
 
-/* ** */
-/* Ul */
-/* ** */
 
-ul {
-   padding: 0;
 
-   padding-bottom: 8rem;
+/* ****** */
+/* Header */
+/* ****** */
 
-   list-style: none;
+header {
+   --header-bg-color: blue;
 
-   font-family: arial;
-   font-size: 2rem;
+   z-index: 99;
+
+   position: fixed;
+
+   width: 100%;
+
+   background-color: var((var(--header-bg-color)));
+}
+
+header nav {
+   display: flex;
+
+   align-items: center;
+   justify-content: space-between;
+
+   width: 100%;
+
+   background-color: red;
+}
+
+header nav ul {
+   display: flex;
+
+   background-color: blue;
+}
+
+/* **** */
+/* Main */
+/* **** */
+
+main {
+   padding: 4rem 0;
+
+   display: flex;
+
+   width: 100%;
+   height: 100%;
+
+   background-color: pink;
 }
 
 
-/* ** */
-/* Ol */
-/* ** */
 
-ol {
-   padding: 0;
+/* ********* */
+/* Section 1 */
+/* ********* */
 
-   list-style: none;
+main > section:nth-child(1) {
+   display: flex;
 
-   font-family: arial;
+   flex-direction: column;
+
+   align-items: center;
+   justify-content: space-between;
+
+   width: 100%;
+   height: 100%;
+
+   background-color: yellow;
+}
+
+main > section:nth-child(1) p {
    font-size: 2rem;
+
+   color: red;
+}
+
+
+/* ********* */
+/* Section 2 */
+/* ********* */
+
+main > section:nth-child(2) {
+   z-index: 95;
+
+   position: absolute;
+
+   inset: 0;
+
+   display: grid;
+
+   place-content: center;
+}
+
+.cube {
+   --size: 20vmin;
+   --aspect-ratio: 3 / 1;
+   width: var(--size);
+   height: calc(var(--size) * var(--aspect-ratio));
+   transform-style: preserve-3d;
+   transform: rotate3d(0, -1, 0, 20deg);
+ }
+ 
+ .face {
+   --color: transparent;
+   --border-color: black;
+   width: 100%;
+   height: 100%;
+   background: var(--color);
+   border: 2px solid black;
+   position: absolute;
+   opacity: 0.75;
+   transform: translateZ(calc(var(--size) / 2));
+ }
+ 
+ .front {
+   transform: translateZ(calc(var(--size) / 2));
+ /*   background-color: yellow; */
+ }
+ 
+ .back {
+   transform: translateZ(calc(-1 * var(--size) / 2)) rotateY(180deg);
+ /*   background-color: green; */
+ }
+ 
+ .left {
+   transform: translateX(calc(-1 * var(--size) / 2)) rotateY(-90deg);
+ }
+ 
+ .right {
+   transform: translateX(calc(var(--size) / 2)) rotateY(90deg);
+ }
+ 
+ .top {
+   --aspect-ratio: 1 / 1;
+   height: calc(var(--size) * var(--aspect-ratio));
+   transform: translateY(calc(-1 * var(--size) / 2)) rotateX(90deg);
+ /*   background-color: blue; */
+ }
+ 
+ .bottom {
+   --size: 60vmin;
+   --aspect-ratio: 1 / 1;
+   width: 20vmin;
+   height: 20vmin;
+   aspect-ratio: 1;
+   transform: translateY(calc(var(--size) / 2)) rotateX(-90deg);
+ /*   background-color: red; */
+ }
+ 
+
+/* ****** */
+/* Footer */
+/* ****** */
+
+footer {
+   --footer-bg-color: red;
+
+   position: absolute;
+
+   bottom: 0;
+
+   width: 100%;
+
+   background-color: var(--footer-bg-color);
+}
+
+footer ul {
+   display: flex;
+
+   justify-content: space-between;
+
+   width: 100%;
+
+   background-color: green;
 }

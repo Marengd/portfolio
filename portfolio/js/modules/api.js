@@ -5,5 +5,19 @@ export async function getGithubData() {
    const reposResponse = await fetch('https://api.github.com/users/marengd/repos');
    const repos = await reposResponse.json();
 
-   return { user, repos };
+    // Fetch languages for each repository
+  const languagePromises = repos.map(async (repo) => {
+    const languagesResponse = await fetch(repo.languages_url);
+    const languages = await languagesResponse.json();
+    return Object.keys(languages);
+  });
+
+  const allLanguages = await Promise.all(languagePromises);
+
+  // Add languages to the repository objects
+  repos.forEach((repo, index) => {
+    repo.languages = allLanguages[index];
+  });
+
+  return { user, repos };
  }

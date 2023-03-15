@@ -8,6 +8,7 @@ async function CreateCubes() {
   const repositoryTitle = $('#repository-title');
   const repositoryDescription = $('#repository-description');
   const repositoryLanguages = $('#repository-languages');
+  const repositoryDetails = $('#repository-details'); // Get the reference to the #repository-details element
 
   function showRepositoryInfo(title, description, languages) {
     repositoryTitle.textContent = title;
@@ -22,12 +23,16 @@ async function CreateCubes() {
       li.textContent = language;
       repositoryLanguages.appendChild(li);
     });
+
+    repositoryDetails.classList.add('active'); // Add the .active class when hovering over a cube
   }
 
   function clearRepositoryInfo() {
     repositoryTitle.textContent = '';
     repositoryDescription.textContent = '';
     repositoryLanguages.innerHTML = '';
+
+    repositoryDetails.classList.remove('active'); // Remove the .active class when not hovering over a cube
   }
 
   repos.forEach((repo) => {

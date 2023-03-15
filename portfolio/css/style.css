@@ -1,7 +1,3 @@
-
-
-
-
 /* ********* */
 /* CSS Reset */
 /* ********* */
@@ -220,6 +216,10 @@ header {
 /* ************* */
 
 #index > section:nth-child(1) {
+   display: none;
+}
+
+#index > section:nth-child(1).active {
    z-index: 95;
 
    pointer-events: none;
@@ -232,6 +232,7 @@ header {
 
    align-items: flex-end;
 }
+
 
 #index > section:nth-child(1) article {
    width: 60vmin;
@@ -270,17 +271,12 @@ header {
    width: var(--size);
    height: calc(var(--size) * var(--aspect-ratio));
    transform-style: preserve-3d;
-   transition: transform 0.5s ease-out; /* Add a transition to the transform property */
- }
- 
- .cube {
-   /* Add the animation with a paused state */
-   animation: rotating 5s infinite linear;
-   animation-play-state: paused;
+   transition: 0.5s ease-out; /* Add a transition to the transform property */
+
  }
  
  .cube:hover {
-   animation-play-state: running;
+   animation: rotating 5s infinite linear;
  }
  
  @keyframes rotating {
@@ -292,19 +288,8 @@ header {
    }
  }
 
- @keyframes returnToOriginal {
-   0% {
-     transform: inherit;
-   }
-   100% {
-     transform: rotate3d(1, 1, 0, 0deg) rotateY(0deg);
-   }
- }
  
  
- 
- 
-
 
 .face {
   --color: transparent;
@@ -376,4 +361,3 @@ header {
 footer {
    display: none;
 }
-

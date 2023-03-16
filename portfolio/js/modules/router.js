@@ -9,10 +9,10 @@ const routes = {
         title: "Home",
         description: "This is the home page",
     },
-    hof: {
-        template: "../templates/hof.html",
-        title: "Hall of Fame",
-        description: "This is the Hall of Fame",
+    info: {
+        template: "../templates/info.html",
+        title: "Info",
+        description: "Info",
     },
     contact: {
         template: "../templates/contact.html",

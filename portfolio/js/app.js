@@ -7,7 +7,7 @@ import './modules/interaction.js';
 
 import './data.js';
 
-import './personal_information.js';
+import './display-personal-information.js';
 
 import './repos.js';
 

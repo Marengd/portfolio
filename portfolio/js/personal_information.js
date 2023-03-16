@@ -1,1 +1,0 @@
-console.log("Display My Personal Data");

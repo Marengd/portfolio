@@ -5,12 +5,14 @@ async function CreateCubes() {
   const { user, repos } = await getGithubData();
 
   const cubeGrid = $('#cube-grid');
+  const repositoryID = $('#repository-id');
   const repositoryTitle = $('#repository-title');
   const repositoryDescription = $('#repository-description');
   const repositoryLanguages = $('#repository-languages');
   const repositoryDetails = $('#repository-details');
 
-  function showRepositoryInfo(title, description, languages) {
+  function showRepositoryInfo(id, title, description, languages) {
+    repositoryID.textContent = id;
     repositoryTitle.textContent = title;
     repositoryDescription.textContent = description;
 
@@ -26,6 +28,7 @@ async function CreateCubes() {
   }
 
   function clearRepositoryInfo() {
+    repositoryID.textContent = '';
     repositoryTitle.textContent = '';
     repositoryDescription.textContent = '';
     repositoryLanguages.innerHTML = '';
@@ -43,7 +46,7 @@ async function CreateCubes() {
     cube.classList.add('cube');
 
     cube.addEventListener('mouseover', () => {
-      showRepositoryInfo(repo.name, repo.description, repo.languages);
+      showRepositoryInfo(repo.id, repo.name, repo.description, repo.languages);
       cube.querySelectorAll('.face img').forEach(img => img.classList.add('active'));
     });
 
@@ -56,12 +59,11 @@ async function CreateCubes() {
     faceClasses.forEach((faceClass) => {
       const face = document.createElement('div');
       face.classList.add('face', faceClass);
-      
-      // Add an image element to each face
+
       const img = document.createElement('img');
-      img.src = 'https://plus.unsplash.com/premium_photo-1664879065853-0360d722eda9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60'; // Set the image source
+      img.src = 'https://plus.unsplash.com/premium_photo-1664879065853-0360d722eda9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60';
       face.appendChild(img);
-      
+
       cube.appendChild(face);
     });
 

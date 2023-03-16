@@ -123,9 +123,9 @@ meter {
 /* ************ */
 
 @font-face {
-   font-family: 'PPNeueWorld-Regular';
-   src: url('../assets/fonts/PPNeueWorld-Regular.woff2') format('woff2'),
-        url('../assets/fonts/PPNeueWorld-Regular.woff') format('woff');
+   font-family: 'SuisseIntl-Regular';
+   src: url('../assets/fonts/SuisseIntl-Regular.woff2') format('woff2'),
+        url('../assets/fonts/SuisseIntl-Regular.woff') format('woff');
    font-weight: normal;
    font-style: normal;
 }
@@ -135,12 +135,11 @@ meter {
 /* ************** */
 
 @font-face {
-   font-family: 'PPNeueWorld-CondensedRegular';
-   src: url('../assets/fonts/PPNeueWorld-CondensedRegular.woff2') format('woff2'),
-         url('../assets/fonts/PPNeueWorld-CondensedRegular.woff') format('woff');
+   font-family: 'SuisseWorks-Regular';
+   src: url('../assets/fonts/SuisseWorks-Regular.woff2') format('woff2'),
+         url('../assets/fonts/SuisseWorks-Regular.woff') format('woff');
    font-weight: normal;
    font-style: normal;
-   font-stretch: condensed;
 }
 
 
@@ -152,6 +151,22 @@ meter {
 
 :root {
 
+   --page-background-color: black;
+
+   --primary-font-family: SuisseIntl-Regular;
+   --secondary-font-family: SuisseWorks-Regular;
+
+   --primary-text-color: white;
+   --secondary-text-color: black;
+
+   --primary-button-hover-text-color: black;
+   --primary-button-hover-background-color: white;
+
+   --XS-spacing: 1rem;
+   --S-spacing: 2rem;
+   --M-spacing: 4rem;
+   --L-spacing: 8rem;
+   --XL-spacing: 16rem;
 }
 
 
@@ -171,7 +186,11 @@ html {
 /* **** */
 
 body {
+   padding: var(--page-margin);
+
    height: 100dvh;
+
+   background-color: var(--page-background-color);
 }
 
 
@@ -182,8 +201,66 @@ body {
 /* ****** */
 
 header {
-   display: none;
+   --header-bg-color: transparent;
+
+   position: fixed;
+   z-index: 1000; /* Add this line */
+
+   width: 100%;
+   height: auto;
+
+   background-color: var(--header-bg-color);
 }
+
+
+header nav {
+   display: flex;
+
+   justify-content: space-between;
+
+   width: 100%;
+   height: auto;
+}
+
+header nav ul {
+   --nav-a-spacing-between: var(--XS-spacing);
+
+   display: flex;
+
+   gap: var(--nav-a-spacing-between);
+}
+
+
+
+header nav ul li a {
+   --nav-a-padding: .8rem 2.4rem;
+ 
+   --nav-a-font-family: var(--primary-font-family);
+   --nav-a-font-size: 2rem;
+   --nav-a-text-color: white;
+ 
+   --nav-a-border: 0.2rem solid var(--nav-a-border-color);
+   --nav-a-border-color: white;
+   --nav-a-border-radius: 100rem;
+ 
+   padding: var(--nav-a-padding);
+
+   display: inline-block;
+ 
+   font-family: var(--nav-a-font-family);
+   font-size: var(--nav-a-font-size);
+   color: var(--nav-a-text-color);
+ 
+   border: var(--nav-a-border);
+   border-radius: var(--nav-a-border-radius);
+ }
+ 
+ header nav ul li a:hover {
+   color: var(--primary-button-hover-text-color);
+   background-color: var(--primary-button-hover-background-color);
+ }
+
+
 
 
 
@@ -198,7 +275,7 @@ header {
 /* ***** */
 
 #index {
-   --primary-bg-color: red;
+   position: relative;
 
    display: grid;
 
@@ -206,8 +283,6 @@ header {
 
    width: 100%;
    height: 100%;
-
-   background-color: var(--primary-bg-color);
 }
 
 
@@ -224,7 +299,9 @@ header {
 
    pointer-events: none;
 
-   position: fixed;
+   display: flex;
+
+   position: absolute;
 
    inset: 0;
 
@@ -234,30 +311,140 @@ header {
 }
 
 
-#index > section:nth-child(1) article {
-   width: 60vmin;
-   height: 20vmin;
+/* ****************** */
+/* Repository Details */
+/* ****************** */
 
-   background-color: blue;
+#index > section:nth-child(1) article {
+   --repo-details-width: auto;
+   --repo-details-height: auto;
+
+   display: flex;
+
+   flex-direction: column;
+
+   justify-content: center;
+
+   width: var(--repo-details-width);
+   height: var(--repo-details-height);
+
 }
+
+/* ************* */
+/* Repository ID */
+/* ************* */
+
+#index > section:nth-child(1) article h3 {
+   --repo-details-h3-font-family: var(--primary-font-family);
+   --repo-details-h3-font-size: 1.6rem;
+   --repo-details-h3-text-color: white;
+
+   font-family: var(--repo-details-h3-font-family);
+   font-size: var(--repo-details-h3-font-size);
+
+   color: var(--repo-details-h3-text-color);
+}
+
+/* **************** */
+/* Repository Title */
+/* **************** */
+
+#index > section:nth-child(1) article h2 {
+   --repo-details-h2-padding-bottom: var(--XS-spacing);
+
+   --repo-details-h2-font-family: var(--secondary-font-family);
+   --repo-details-h2-font-size: 8rem;
+   --repo-details-h2-text-color: white;
+
+   padding-bottom: var(--repo-details-h2-padding-bottom);
+
+   font-family: var(--repo-details-h2-font-family);
+   font-size: var(--repo-details-h2-font-size);
+
+   text-transform: capitalize;
+
+   color: var(--repo-details-h2-text-color);
+}
+
+/* ********************** */
+/* Repository Description */
+/* ********************** */
+
+#index > section:nth-child(1) article p  {
+   --repo-details-p-padding-bottom: var(--S-spacing);
+
+   --repo-details-p-font-family: var(--primary-font-family);
+   --repo-details-p-font-size: 2rem;
+   --repo-details-p-text-color: white;
+
+   padding-bottom: var(--repo-details-p-padding-bottom);
+
+   font-family: var(--repo-details-p-font-family);
+   font-size: var(--repo-details-p-font-size);
+
+   color: var(--repo-details-p-text-color);
+}
+
+/* ******************************** */
+/* Repository Programming Languages */
+/* ******************************** */
+
+#index > section:nth-child(1) article ul {
+   --repo-details-pills-spacing: 2rem;
+
+   display: flex;
+
+   gap: var(--repo-details-pills-spacing);
+}
+
+#index > section:nth-child(1) article ul li {
+   --repo-details-li-padding: 1rem 2rem;
+
+   --repo-details-li-font-family: var(--primary-font-family);
+   --repo-details-li-font-size: 1rem;
+   --repo-details-li-text-color: var(--secondary-text-color);
+
+   --repo-details-li-border-radius: 99rem;
+   --repo-details-li-background-color: white;
+
+
+   padding: var(--repo-details-li-padding);
+
+   font-family: var(--repo-details-li-font-family);
+   font-size: var(--repo-details-li-font-size);
+
+   color: var(--repo-details-li-text-color);
+
+   border-radius: var(--repo-details-li-border-radius);
+
+   background-color: vaR(--repo-details-li-background-color);
+}
+
+
+
+
+/* *************** */
+/* Repository List */
+/* *************** */
 
 #index > section:nth-child(2) {
    width: 100%;
    height: 100%;
-}
-
-#index > section:nth-child(1) h2 {
-   font-size: 4rem;
+   
 }
 
 
+/* ********** */
+/* Cubes Grid */
+/* ********** */
 
 #index > section:nth-child(2) ul {
+   --cube-list-spacing-between: 8rem;
+
    display: flex;
 
-   gap: 5rem;
+   gap: var(--cube-list-spacing-between);
 }
-
 
 
 /* ***** */
@@ -265,7 +452,7 @@ header {
 /* ***** */
 
 .cube {
-   --size: 20vmin;
+   --size: 16vmin;
    --aspect-ratio: 1;
    
    width: var(--size);
@@ -370,5 +557,17 @@ header {
 /* ****** */
 
 footer {
-   display: none;
+   position: absolute;
+
+   bottom: 0;
+
+   display: flex;
+
+   align-items: center;
+   justify-content: flex-end;
+
+   width: 100%;
+}
+
+footer ul li button {
 }

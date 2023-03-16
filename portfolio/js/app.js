@@ -5,7 +5,7 @@ import './modules/api.js';
 
 import './modules/interaction.js';
 
-// import './data.js';
+import './data.js';
 
 import './repos.js';
 

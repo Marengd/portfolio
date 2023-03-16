@@ -238,10 +238,10 @@ header nav ul {
 
 
 header nav ul li a {
-   --nav-a-padding: .8rem 2.4rem;
+   --nav-a-padding: .4rem 1.6rem;
  
    --nav-a-font-family: var(--primary-font-family);
-   --nav-a-font-size: 2rem;
+   --nav-a-font-size: 1.6rem;
    --nav-a-text-color: white;
  
    --nav-a-border: 0.2rem solid var(--nav-a-border-color);

@@ -11,6 +11,18 @@ async function CreateCubes() {
   const repositoryLanguages = $('#repository-languages');
   const repositoryDetails = $('#repository-details');
 
+  // Add your repository names and their corresponding image sources
+  const repoImageMapping = {
+    'bedieningspaneel': 'https://images.unsplash.com/photo-1670272505391-8efda8e7a99c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+    'buy_dero_web_server': 'https://images.unsplash.com/photo-1674574124567-79b2ee3d22fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+    'kwoot': 'https://images.unsplash.com/photo-1670272505391-8efda8e7a99c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+    'Marengd': 'https://plus.unsplash.com/premium_photo-1661660059550-dded7430ee3d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+    'Matchingapp-team2': 'https://images.unsplash.com/photo-1670272505391-8efda8e7a99c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+    'portfolio-in-a-week': 'https://plus.unsplash.com/premium_photo-1661660059550-dded7430ee3d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+    'pt-matching-app': 'https://images.unsplash.com/photo-1670272505391-8efda8e7a99c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+    // ...
+  };
+
   function showRepositoryInfo(id, title, description, languages) {
     repositoryID.textContent = id;
     repositoryTitle.textContent = title;
@@ -61,7 +73,8 @@ async function CreateCubes() {
       face.classList.add('face', faceClass);
 
       const img = document.createElement('img');
-      img.src = 'https://plus.unsplash.com/premium_photo-1664879065853-0360d722eda9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60';
+      // Use the image source from the mapping or a default image if not found
+      img.src = repoImageMapping[repo.name] || 'default-image-source';
       face.appendChild(img);
 
       cube.appendChild(face);

@@ -1,5 +1,5 @@
-import { getGithubData } from './modules/api.js';
-import { $ } from './modules/helper.js';
+import { getGithubData } from './api.js';
+import { $ } from './helper.js';
 
 function formatDate(date) {
   const day = date.getDate();

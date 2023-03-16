@@ -150,10 +150,8 @@ meter {
 /* ***************** */
 
 :root {
-
-   --page-margin-top-bottom: 2rem;
-   --page-margin-sides: 4rem;
-   --page-margin: 0;
+   --page-margin-top-bottom: clamp(1.6rem, 8vmin, 2rem);
+   --page-margin-sides: clamp(1.6rem, 8vmin, 2rem);
 
    --page-background-color: black;
 
@@ -186,6 +184,8 @@ html {
 }
 
 
+
+
 /* **** */
 /* Body */
 /* **** */
@@ -200,6 +200,7 @@ body {
 
 
 
+
 /* ****** */
 /* Header */
 /* ****** */
@@ -208,6 +209,8 @@ header {
    --header-bg-color: transparent;
 
    z-index: 999;
+
+   padding: var(--page-margin-top-bottom) var(--page-margin-sides);
 
    position: fixed;
 
@@ -218,6 +221,10 @@ header {
 }
 
 
+/* ********** */
+/* Header Nav */
+/* ********** */
+
 header nav {
    display: flex;
 
@@ -227,7 +234,6 @@ header nav {
    height: auto;
 }
 
-
 header nav ul {
    --nav-a-spacing-between: var(--XS-spacing);
 
@@ -236,15 +242,14 @@ header nav ul {
    gap: var(--nav-a-spacing-between);
 }
 
-
 header nav ul li a {
    --nav-a-padding: .4rem 1.6rem;
  
-   --nav-a-font-family: var(--primary-font-family);
+   --nav-a-font-family: var(--secondary-font-family);
    --nav-a-font-size: 1.6rem;
    --nav-a-text-color: white;
  
-   --nav-a-border: 0.2rem solid var(--nav-a-border-color);
+   --nav-a-border: 0.1rem solid var(--nav-a-border-color);
    --nav-a-border-color: white;
    --nav-a-border-radius: 100rem;
  
@@ -264,8 +269,6 @@ header nav ul li a {
    color: var(--primary-button-hover-text-color);
    background-color: var(--primary-button-hover-background-color);
  }
-
-
 
 
 
@@ -324,6 +327,8 @@ header nav ul li a {
    --repo-details-width: auto;
    --repo-details-height: auto;
 
+   padding: var(--page-margin-top-bottom) var(--page-margin-sides);
+
    display: flex;
 
    flex-direction: column;
@@ -332,7 +337,6 @@ header nav ul li a {
 
    width: var(--repo-details-width);
    height: var(--repo-details-height);
-
 }
 
 /* ************* */
@@ -342,7 +346,7 @@ header nav ul li a {
 #index > section:nth-child(1) article h3 {
    --repo-details-h3-font-family: var(--primary-font-family);
    --repo-details-h3-font-size: 1.6rem;
-   --repo-details-h3-text-color: white;
+   --repo-details-h3-text-color: var(--tertiary-text-color);
 
    font-family: var(--repo-details-h3-font-family);
    font-size: var(--repo-details-h3-font-size);
@@ -379,8 +383,8 @@ header nav ul li a {
    --repo-details-p-padding-bottom: var(--S-spacing);
 
    --repo-details-p-font-family: var(--primary-font-family);
-   --repo-details-p-font-size: 2rem;
-   --repo-details-p-text-color: white;
+   --repo-details-p-font-size: 1.6rem;
+   --repo-details-p-text-color: var(--primary-text-color);
 
    padding-bottom: var(--repo-details-p-padding-bottom);
 
@@ -433,10 +437,22 @@ header nav ul li a {
 /* *************** */
 
 #index > section:nth-child(2) {
-   width: 100%;
-   height: 100%;
-   
+   overflow: auto;
+
+   display: grid;
+
+   place-content: center;
+
+   width: 100vw;
+   height: auto;
+
+   scrollbar-width: none; /* Hides scrollbar for Firefox */
+   -ms-overflow-style: none; /* Hides scrollbar for Internet Explorer and Edge */
 }
+
+section::-webkit-scrollbar {
+   display: none;
+ }
 
 
 /* ********** */
@@ -448,7 +464,13 @@ header nav ul li a {
 
    display: flex;
 
+   align-items: center;
+
    gap: var(--cube-list-spacing-between);
+
+
+   width: 100%;
+   height: 40vmin;
 }
 
 
@@ -462,9 +484,10 @@ header nav ul li a {
    
    width: var(--size);
    height: calc(var(--size) * var(--aspect-ratio));
-   transform-style: preserve-3d;
-   transition: 0.5s ease-out; /* Add a transition to the transform property */
 
+   transform-style: preserve-3d;
+
+   transition: 0.5s ease-out;
  }
  
  .cube:hover {
@@ -481,23 +504,30 @@ header nav ul li a {
  }
 
 .face {
-  --color: transparent;
-  --border-color: white;
+  --cube-color: transparent;
+
+  --cube-border-color: white;
+  --cube-border: 1.5px solid var(--cube-border-color);
+
+  opacity: 0.75;
+
+  position: absolute;
 
   width: 100%;
   height: 100%;
-  background: var(--color);
-  border: 2px solid var(--border-color);
-  position: absolute;
-  opacity: 0.75;
+
+  border: var(--cube-border);
+
+  background: var(--cube-color);
+
   transform: translateZ(calc(var(--size) / 2));
 }
 
 .face img {
-   opacity: 0;
+   opacity: 0; /* Hide the images inside of the cubes. */
 }
 
-.face img.active {
+.face img.active { /* Show the images inside of the cubes, while hovering */
    opacity: 100;
 
    width: 100%;
@@ -531,10 +561,6 @@ header nav ul li a {
 
 
 
-
-
-
-
 /* **** */
 /* Info */
 /* **** */
@@ -563,47 +589,25 @@ header nav ul li a {
 /* ************ */
 
 #info > section:nth-child(1) {
-   padding-bottom: var(--XL-spacing);
+   padding: 0 var(--page-margin-sides);
 
    display: flex;
 
    flex-direction: column;
 
    width: 100%;
-   height: 100%;
 }
 
 #info > section:nth-child(1) h2 {
-   --info-h2-font-size: 13vw;
+   --info-h2-font-size: 10vw;
+
+   padding-bottom: var(--L-spacing);
 
    font-family: var(--primary-font-family);
    font-size: var(--info-h2-font-size);
 
-   text-align: center;
-
-   height: 10vw; /* Tijdelijk */
-
    color: var(--primary-text-color);
 }
-
-#info > section:nth-child(1) ul {
-   display: flex;
-
-   align-items: center;
-   justify-content: space-between;
-}
-
-#info > section:nth-child(1) ul li {
-   --h2-details-font-size: 1.6rem;
-
-   font-family: vaR(--primary-font-family);
-   font-size: var(--h2-details-font-size);
-
-   color: var(--primary-text-color);
-}
-
-
-
 
 
 
@@ -612,21 +616,22 @@ header nav ul li a {
 /* **************** */
 
 #info aside {
+   --personal-information-lists-spacing: var(--L-spacing);
+
    padding: 0 var(--page-margin-sides);
 
    display: grid;
+
    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-   gap: 10px;
+
+   gap: var(--personal-information-lists-spacing);
 }
 
-
 #info aside section {
-   padding-bottom: var(--L-spacing);
+   padding-bottom: var(--S-spacing);
 
    width: 100%;
    height: 100%;
-
-   color: white;
 }
 
 #info aside section:last-of-type {
@@ -641,6 +646,8 @@ header nav ul li a {
 
    font-family: var(--secondary-font-family);
    font-size: var(--personal-information-h3-font-size);
+
+   color: var(--primary-text-color);
 }
 
 #info aside dl #github-bio {
@@ -649,16 +656,25 @@ header nav ul li a {
    max-width: 40rem;
 }
 
+/* *********** */
+/* Detail List */
+/* *********** */
 
 #info aside section dl {
    --dl-font-size: 1.6rem;
 
    font-family: var(--primary-font-family);
    font-size: var(--dl-font-size);
+
+   color: var(--primary-text-color);
 }
 
+/* ****************** */
+/* Detail List Titles */
+/* ****************** */
+
 #info aside section dl dt {
-   --dt-bottom-spacing: .4rem;
+   --dt-bottom-spacing: .8rem;
    --dt-font-size: 1.4rem;
    --dt-text-color: var(--tertiary-text-color);
 
@@ -669,28 +685,23 @@ header nav ul li a {
    color: var(--tertiary-text-color);
 }
 
+/* **************** */
+/* Detail List Data */
+/* **************** */
+
 #info aside section dl dd {
    padding-bottom: var(--S-spacing);
 }
 
-
-
+/* The 2nd and 4th, needs more space underneath */
 #info aside section:nth-child(3) dl dd:nth-of-type(2),
 #info aside section:nth-child(3) dl dd:nth-of-type(4) {
    padding-bottom: var(--M-spacing);
 }
 
+/* The last one, needs more space on top */
 #info aside section:nth-child(3) dt:last-of-type {
    padding-top: var(--M-spacing);
-}
-
-
-/* ******* */
-/* Contact */
-/* ******* */
-
-#contact {
-
 }
 
 
@@ -713,5 +724,15 @@ footer {
    width: 100%;
 }
 
-footer ul li button {
+footer ul li p {
+   --credit-font-size: 1.4rem;
+
+   padding: var(--page-margin-top-bottom) var(--page-margin-sides);
+
+   text-align: right;
+
+   font-family: var(--primary-font-family);
+   font-size: var(--credit-font-size);
+
+   color: var(--primary-text-color);
 }

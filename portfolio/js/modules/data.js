@@ -1,13 +1,11 @@
 // Imports
-
-import { $ } from "./modules/helper.js";
-import { getGithubData } from "./modules/api.js";
+import { $ } from "./helper.js";
+import { getGithubData } from "./api.js";
 
 
 
 
 // Logic
-
 async function displayUserData() {
   const userData = await getGithubData();
   const user = userData.user;

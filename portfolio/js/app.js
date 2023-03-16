@@ -3,12 +3,7 @@ console.log("Danian");
 import './modules/router.js';
 import './modules/api.js';
 
-import './modules/interaction.js';
+import './modules/data.js';
 
-import './data.js';
-
-import './display-repositories.js';
-import './display-personal-information.js';
-
-
-import './test.js';
+import './modules/display-repositories.js';
+import './modules/display-personal-information.js';

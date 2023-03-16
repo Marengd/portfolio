@@ -48,6 +48,13 @@ async function CreateCubes() {
     repositoryDetails.classList.remove('active');
   }
 
+  function getRandomRotation() {
+    const randomX = Math.floor(Math.random() * 360);
+    const randomY = Math.floor(Math.random() * 360);
+    const randomZ = Math.floor(Math.random() * 360);
+    return `rotateX(${randomX}deg) rotateY(${randomY}deg) rotateZ(${randomZ}deg)`;
+  }
+
   repos.forEach((repo) => {
     const li = document.createElement('li');
     const a = document.createElement('a');
@@ -56,6 +63,7 @@ async function CreateCubes() {
 
     const cube = document.createElement('div');
     cube.classList.add('cube');
+    cube.style.transform = getRandomRotation();
 
     cube.addEventListener('mouseover', () => {
       showRepositoryInfo(repo.id, repo.name, repo.description, repo.languages);

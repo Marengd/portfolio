@@ -151,6 +151,10 @@ meter {
 
 :root {
 
+   --page-margin-top-bottom: 2rem;
+   --page-margin-sides: 4rem;
+   --page-margin: 0;
+
    --page-background-color: black;
 
    --primary-font-family: SuisseIntl-Regular;
@@ -158,6 +162,7 @@ meter {
 
    --primary-text-color: white;
    --secondary-text-color: black;
+   --tertiary-text-color: #999999;
 
    --primary-button-hover-text-color: black;
    --primary-button-hover-background-color: white;
@@ -195,7 +200,6 @@ body {
 
 
 
-
 /* ****** */
 /* Header */
 /* ****** */
@@ -203,8 +207,9 @@ body {
 header {
    --header-bg-color: transparent;
 
-   position: fixed;
-   z-index: 1000; /* Add this line */
+   z-index: 999;
+
+   position: relative;
 
    width: 100%;
    height: auto;
@@ -545,11 +550,14 @@ header nav ul li a {
    height: 100%;
 }
 
+
 /* ************ */
 /* Introduction */
 /* ************ */
 
 #info > section:nth-child(1) {
+   padding-bottom: var(--XL-spacing);
+
    display: flex;
 
    flex-direction: column;
@@ -566,13 +574,12 @@ header nav ul li a {
 
    text-align: center;
 
-   height: 16vw; /* Tijdelijk */
+   height: 10vw; /* Tijdelijk */
 
    color: var(--primary-text-color);
 }
 
 #info > section:nth-child(1) ul {
-
    display: flex;
 
    align-items: center;
@@ -588,19 +595,36 @@ header nav ul li a {
    color: var(--primary-text-color);
 }
 
+
+
+
+
+
+/* **************** */
+/* Personal Details */
+/* **************** */
+
 #info aside {
+   padding: 0 var(--page-margin-sides);
+
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
    gap: 10px;
 }
 
+
 #info aside section {
+   padding-bottom: var(--L-spacing);
+
    width: 100%;
    height: 100%;
 
    color: white;
 }
 
+#info aside section:last-of-type {
+   padding-bottom: 0;
+}
 
 #info aside section h3 {
    --personal-information-h3-font-size: 2rem;
@@ -612,13 +636,41 @@ header nav ul li a {
    font-size: var(--personal-information-h3-font-size);
 }
 
+#info aside dl #github-bio {
+   line-height: 1.4;
 
-#info aside section dd {
+   max-width: 40rem;
+}
+
+
+#info aside section dl {
+   --dl-font-size: 1.6rem;
+
+   font-family: var(--primary-font-family);
+   font-size: var(--dl-font-size);
+}
+
+#info aside section dl dt {
+   --dt-bottom-spacing: .4rem;
+   --dt-font-size: 1.4rem;
+   --dt-text-color: var(--tertiary-text-color);
+
+   padding-bottom: var(--dt-bottom-spacing);
+
+   font-size: var(--dt-font-size);
+
+   color: var(--tertiary-text-color);
+}
+
+#info aside section dl dd {
    padding-bottom: var(--S-spacing);
 }
 
-#info aside section:nth-child(3) dl dd:nth-of-type(2n + 2) {
-   padding-bottom: var(--S-spacing);
+
+
+#info aside section:nth-child(3) dl dd:nth-of-type(2),
+#info aside section:nth-child(3) dl dd:nth-of-type(4) {
+   padding-bottom: var(--M-spacing);
 }
 
 #info aside section:nth-child(3) dt:last-of-type {

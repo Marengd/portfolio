@@ -7,8 +7,8 @@ import './modules/interaction.js';
 
 import './data.js';
 
+import './display-repositories.js';
 import './display-personal-information.js';
 
-import './repos.js';
 
 import './test.js';
